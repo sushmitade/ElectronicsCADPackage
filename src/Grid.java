@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javafx.application.*;
 /**
@@ -11,12 +13,12 @@ import javafx.application.*;
  * 
  */
 
-
 public class Grid extends JFrame implements ActionListener {
 
+	private ArrayList<Shape> drawList; 
+	private int startX, startY, endX, endY;
 	int r;
 	JButton[] button1 = new JButton[30];
-
 	Font font = null;
 	JTextField textField = null;
 
@@ -25,6 +27,7 @@ public class Grid extends JFrame implements ActionListener {
 }
 	public Grid()
 	{
+		drawList = new ArrayList<Shape>(10000);	
 		JFrame f = new JFrame("Electronics CAD Package");
 		f.setLayout(new BorderLayout());
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,6 +35,7 @@ public class Grid extends JFrame implements ActionListener {
 		JPanel j1 = new JPanel(new GridLayout(10,10));
 		j1.setSize(50,15);
 		font = new Font("Helvetica", Font.PLAIN, 40);
+		JPopupMenu popup;
 		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
@@ -67,7 +71,7 @@ public class Grid extends JFrame implements ActionListener {
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
-		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
+		//JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
 			
 		f.setJMenuBar(menuBar);
 
@@ -78,6 +82,31 @@ public class Grid extends JFrame implements ActionListener {
 		f.setVisible(true);
 
 		f.add(p, BorderLayout.CENTER);
+		
+		addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+
+			}
+			public void mousePressed(MouseEvent e) {
+
+			}
+			
+			public void mouseExited(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {
+				setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+			}
+			
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		addMouseMotionListener(new MouseMotionListener() {
+			public void mouseMoved(MouseEvent e) {
+			}
+			public void mouseDragged(MouseEvent e) {
+				Graphics g = getGraphics();
+				g.setXORMode(Color.WHITE);
+			}
+		});
 	}
 	
 	
