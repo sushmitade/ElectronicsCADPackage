@@ -75,4 +75,6 @@ public class Grid extends JFrame implements ActionListener {
 		
 	}
 }
+
+i see it loud and clear! 
 	
