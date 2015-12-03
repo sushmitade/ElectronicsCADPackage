@@ -1,7 +1,16 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javafx.application.*;
+/**
+ * 
+ * @author Shrikant Limaye
+ * @author Sushmita De
+ *
+ * Click Run and check Help -> About to learn more about this project.
+ * 
+ */
+
 
 public class Grid extends JFrame implements ActionListener {
 
@@ -58,6 +67,7 @@ public class Grid extends JFrame implements ActionListener {
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
+		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
 			
 		f.setJMenuBar(menuBar);
 
