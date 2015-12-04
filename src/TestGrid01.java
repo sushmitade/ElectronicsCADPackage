@@ -4,8 +4,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-
-
 public class TestGrid01 extends Grid {
 
     public static void main(String[] args) {
