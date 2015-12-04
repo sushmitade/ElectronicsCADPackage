@@ -22,9 +22,6 @@ public class Grid extends JFrame implements ActionListener {
 	Font font = null;
 	JTextField textField = null;
 
-	public static void main(String[] args) {
-		new Grid();
-}
 	public Grid()
 	{
 		drawList = new ArrayList<Shape>(10000);	
