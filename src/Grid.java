@@ -71,7 +71,7 @@ public class Grid extends JFrame implements ActionListener {
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
-		//JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
+		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
 			
 		f.setJMenuBar(menuBar);
 
