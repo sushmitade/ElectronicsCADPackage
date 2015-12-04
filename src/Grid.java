@@ -13,14 +13,28 @@ import javafx.application.*;
  */
 
 public class Grid extends JFrame implements ActionListener {
-
+	
+	private int width, height, rows, column;
 	private ArrayList<Shape> drawList; 
 	private int startX, startY, endX, endY;
-	int r;
 	JButton[] button1 = new JButton[30];
 	Font font = null;
 	JTextField textField = null;
 
+	  public void backgroundLayout(Graphics g) {
+		    int i;
+		    width = getSize().width;
+		    height = getSize().height;
+
+		    int rowHeightt = height / (rows);
+		    for (i = 0; i < rows; i++)
+		    g.drawLine(0, i * rowHeightt, width, i * rowHeightt);
+
+		    int rowWidth = width / (column);
+		    for (i = 0; i < column; i++)
+		    g.drawLine(i * rowWidth, 0, i * rowWidth, height);
+		  }
+		
 	public Grid(){
 		drawList = new ArrayList<Shape>(10000);	
 		JFrame f = new JFrame("Electronics CAD Package");
@@ -30,21 +44,20 @@ public class Grid extends JFrame implements ActionListener {
 		JPanel j1 = new JPanel(new GridLayout(10,10));
 		j1.setSize(50,15);
 		font = new Font("Helvetica", Font.PLAIN, 40);
-		JPopupMenu popup;
-		
+		createToolBar();
+
+        setTitle("Simple toolbar");
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+   
 		JMenuBar menuBar = new JMenuBar();
-		JMenu file = new JMenu("File");
-		menuBar.add(file);
-		JMenu edit = new JMenu("Edit");
-		menuBar.add(edit);
-		JMenu part = new JMenu("Part");
-		menuBar.add(part);
-		JMenu view = new JMenu("View");
-		menuBar.add(view);
-		JMenu window = new JMenu("Window");
-		menuBar.add(window);
-		JMenu help = new JMenu("Help");
-		menuBar.add(help);
+		JMenu file = new JMenu("File"); menuBar.add(file);
+		JMenu edit = new JMenu("Edit");	menuBar.add(edit);
+		JMenu part = new JMenu("Part");	menuBar.add(part);
+		JMenu view = new JMenu("View");	menuBar.add(view);
+		JMenu window = new JMenu("Window"); menuBar.add(window);
+		JMenu help = new JMenu("Help");	menuBar.add(help);
 		
 		JMenuItem new1 = new JMenuItem("New      Ctrl+N"); file.add(new1);
 		JMenuItem open = new JMenuItem("Open     Ctrl+O"); file.add(open);
@@ -66,7 +79,7 @@ public class Grid extends JFrame implements ActionListener {
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
-		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
+		//JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
 			
 		f.setJMenuBar(menuBar);
 
@@ -78,7 +91,9 @@ public class Grid extends JFrame implements ActionListener {
 
 		f.add(p, BorderLayout.CENTER);
 		
-		addMouseListener(new MouseListener() {
+		}
+		
+		/*addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
 
 			}
@@ -101,11 +116,50 @@ public class Grid extends JFrame implements ActionListener {
 				Graphics g = getGraphics();
 				g.setXORMode(Color.WHITE);
 			}
-		});
+		});*/
+	private void createToolBar() {
+		
 	}
-	
-	
+
+	public class ToolbarEx extends JFrame {	
+    public ToolbarEx() {
+        
+        JToolBar toolBar = new JToolBar();
+        initUI();
+        JButton welcome = new JButton("Welcome");toolBar.add(welcome);
+        JButton breadboard = new JButton("Breadboard");toolBar.add(breadboard);
+        JButton schematic = new JButton("Schematic");toolBar.add(schematic);
+        JButton pcb = new JButton("PCB");toolBar.add(pcb);
+        JButton code = new JButton("Code");toolBar.add(code);
+        
+        welcome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.exit(0);
+            }
+        });
+
+        add(toolBar, BorderLayout.NORTH);        
+    
+    }
+    private void initUI() {
+
+        createToolBar();
+        setTitle("Tool Bar");
+        setSize(1200, 30);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    
 	public void actionPerformed(ActionEvent arg0) {
+		
+	}
+	 public void main(String[] args) {
+	
+	  }
+	    
+	}
+
+	public void actionPerformed(ActionEvent e) {
 		
 	}
 }
