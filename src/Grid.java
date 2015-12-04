@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
 import javax.swing.*;
 import javafx.application.*;
 /**
@@ -22,8 +21,7 @@ public class Grid extends JFrame implements ActionListener {
 	Font font = null;
 	JTextField textField = null;
 
-	public Grid()
-	{
+	public Grid(){
 		drawList = new ArrayList<Shape>(10000);	
 		JFrame f = new JFrame("Electronics CAD Package");
 		f.setLayout(new BorderLayout());
