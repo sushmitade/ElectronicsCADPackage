@@ -3,6 +3,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javafx.application.*;
+
+
 /**
  * 
  * @author Shrikant Limaye
@@ -11,46 +13,43 @@ import javafx.application.*;
  * Click Run and check Help -> About to learn more about this project.
  * 
  */
-
-public class Grid extends JFrame implements ActionListener {
+public class Grid extends JFrame{
+	//private int width, height, row, column;
+	//private ArrayList<Shape> drawList; 
+	//private int startX, startY, endX, endY;
+	//private JPanel j1, j2, j3, j4, j5, j6;
+	//JButton[] button1 = new JButton[30];
+	//Font font = null;
+	//JTextField textField = null;
 	
-	private int width, height, rows, column;
-	private ArrayList<Shape> drawList; 
-	private int startX, startY, endX, endY;
-	JButton[] button1 = new JButton[30];
-	Font font = null;
-	JTextField textField = null;
-
-	  public void backgroundLayout(Graphics g) {
-		    int i;
-		    width = getSize().width;
-		    height = getSize().height;
-
-		    int rowHeightt = height / (rows);
-		    for (i = 0; i < rows; i++)
-		    g.drawLine(0, i * rowHeightt, width, i * rowHeightt);
-
-		    int rowWidth = width / (column);
-		    for (i = 0; i < column; i++)
-		    g.drawLine(i * rowWidth, 0, i * rowWidth, height);
-		  }
-		
 	public Grid(){
-		drawList = new ArrayList<Shape>(10000);	
-		JFrame f = new JFrame("Electronics CAD Package");
-		f.setLayout(new BorderLayout());
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(1200, 700);
-		JPanel j1 = new JPanel(new GridLayout(10,10));
-		j1.setSize(50,15);
-		font = new Font("Helvetica", Font.PLAIN, 40);
-		createToolBar();
-
-        setTitle("Simple toolbar");
-        setSize(300, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-   
+		//drawList = new ArrayList<Shape>(1000);	
+		JFrame f = new JFrame("Electronics CAD Package");  //creating a JFrame
+		f.setSize(1200, 700); //setting the size of the JFrame
+		
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to set exit on close
+		JPanel panel = new JPanel(new GridBagLayout()); //arrange labels and buttons in a panel using GridBagLayout
+		f.getContentPane().add(panel, BorderLayout.PAGE_START); //added the panel to the frame as well as set the orientation to the top of the screen
+		GridBagConstraints c = new GridBagConstraints();
+		JButton j1 = new JButton("Welcome");
+		c.gridx = 0; c.gridy = 0;
+		panel.add(j1, c);	
+		JButton j2 = new JButton("Breadboard");
+		c.gridx = 1; c.gridy = 0;
+		panel.add(j2, c);
+		JButton j3 = new JButton("Schematic");
+		c.gridx = 2; c.gridy = 0;
+		panel.add(j3, c);
+		JButton j4 = new JButton("PCB");
+		c.gridx = 3; c.gridy = 0;
+		panel.add(j4, c);
+		JButton j5 = new JButton("Code");
+		c.gridx = 4; c.gridy = 0;
+		panel.add(j5, c);
+		c.insets = new Insets(10,10,10,10);
+			
+		//font = new Font("Helvetica", Font.PLAIN, 40);
+		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File"); menuBar.add(file);
 		JMenu edit = new JMenu("Edit");	menuBar.add(edit);
@@ -79,87 +78,16 @@ public class Grid extends JFrame implements ActionListener {
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
-		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
-			
 		f.setJMenuBar(menuBar);
-
-		JPanel p = new JPanel();
-		p.setBackground(Color.GRAY);
-
-		f.add(j1,BorderLayout.NORTH);
-		f.setVisible(true);
-
-		f.add(p, BorderLayout.CENTER);
+	
 		
-		}
-		
-		/*addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {
-
-			}
-			public void mousePressed(MouseEvent e) {
-
-			}
-			
-			public void mouseExited(MouseEvent e) {}
-			public void mouseEntered(MouseEvent e) {
-				setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-			}
-			
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		addMouseMotionListener(new MouseMotionListener() {
-			public void mouseMoved(MouseEvent e) {
-			}
-			public void mouseDragged(MouseEvent e) {
-				Graphics g = getGraphics();
-				g.setXORMode(Color.WHITE);
-			}
-		});*/
-	private void createToolBar() {
-		
+		JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
+	
+		f.setVisible(true); //setting the visibility to true
 	}
 
-	public class ToolbarEx extends JFrame {	
-    public ToolbarEx() {
-        
-        JToolBar toolBar = new JToolBar();
-        initUI();
-        JButton welcome = new JButton("Welcome");toolBar.add(welcome);
-        JButton breadboard = new JButton("Breadboard");toolBar.add(breadboard);
-        JButton schematic = new JButton("Schematic");toolBar.add(schematic);
-        JButton pcb = new JButton("PCB");toolBar.add(pcb);
-        JButton code = new JButton("Code");toolBar.add(code);
-        
-        welcome.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-        add(toolBar, BorderLayout.NORTH);        
-    
-    }
-    private void initUI() {
-
-        createToolBar();
-        setTitle("Tool Bar");
-        setSize(1200, 30);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }
-    
-	public void actionPerformed(ActionEvent arg0) {
-		
-	}
-	 public void main(String[] args) {
+	public static void main(String[] args) {
+		Grid s = new Grid ();
 	
 	  }
-	    
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		
-	}
 }
