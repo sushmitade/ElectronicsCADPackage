@@ -7,19 +7,16 @@ public class GridBagLayout1 extends JFrame{
 		f.setSize(1200, 700); //setting the size of the JFrame
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to set exit on close
 
-		
-		//Panel 2
+		//Creating the side panel
 		JPanel panel2 = new JPanel(new GridBagLayout()); //arrange labels and buttons in a panel using GridBagLayout
-		f.getContentPane().add(panel2, BorderLayout.CENTER); //added the panel to the frame as well as set the orientation to the top of the screen
-		//panel2.setSize(200,700);
+		f.getContentPane().add(panel2, BorderLayout.CENTER); //added the panel to the frame as well as set the orientation to the center of the screen
 		GridBagConstraints c2 = new GridBagConstraints();
-		c2.fill = GridBagConstraints.BOTH;
-		c2.weightx = 10; c2.weighty = 10;
-		
+		c2.fill = GridBagConstraints.BOTH; //Allowing the empty spaces to be filled in both the x and y axes
+		c2.weightx = 10; c2.weighty = 10; //Selecting a weight for the GridBagLayout to determine how to distribute the extra horizontal and vertical space
 		
 		JLabel l1 = new JLabel("Core Parts");
 		c2.gridx = 4; c2.gridy = 2;
-		panel2.add(l1, c2);	
+		panel2.add(l1, c2);	 //Adding the JLabel l1 to the Panel and adding to it the GridBagLayout function
 		JButton b11 = new JButton("Resistor");
 		c2.gridx = 4; c2.gridy = 3;
 		panel2.add(b11, c2);
@@ -131,7 +128,6 @@ public class GridBagLayout1 extends JFrame{
 
 		
 		//Top Panel
-		//GridBagConstraints c1 = new GridBagConstraints();
 		JButton b1 = new JButton("     Welcome     ");
 		c2.gridx = 0; c2.gridy = 0;
 		panel2.add(b1, c2);	
@@ -147,10 +143,8 @@ public class GridBagLayout1 extends JFrame{
 		JButton b5 = new JButton("       Code     ");
 		c2.gridx = 4; c2.gridy = 0;
 		panel2.add(b5, c2);
-		//c2.insets = new Insets(10,10,10,10);
-		
-		
-		JTextField t1 = new JTextField();
+				
+		JTextField t1 = new JTextField(); //Placeholder for the grid draw section
 		c2.gridx = 0; c2.gridy = 2;
 		c2.gridwidth = 4; c2.gridheight = 35;
 		panel2.add(t1,c2);
