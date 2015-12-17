@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javafx.application.*;
+import java.awt.EventQueue;
 
 /**
  * 
@@ -20,6 +21,16 @@ public class Grid extends JFrame{
 	private GridBagLayout1 gridBagLayout1;
 	
 	public Grid(){		
+		EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 		drawList = new ArrayList<Shape>(1000);
 		drawList.add(new Line(400, 150, 700, 150));
 		setLayout(new BorderLayout());
