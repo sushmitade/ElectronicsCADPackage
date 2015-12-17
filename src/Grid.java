@@ -14,27 +14,20 @@ import javafx.application.*;
  */
 
 public class Grid extends JFrame{
-	//private int width, height, row, column;
-	//private ArrayList<Shape> drawList; 
-	//private int startX, startY, endX, endY;
-	//private JPanel j1, j2, j3, j4, j5, j6;
-	//JButton[] button1 = new JButton[30];
-	//Font font = null;
-	//JTextField textField = null;
-	private GridLayout gridLayout;
+	private int width = 1200, height = 700, rows, column;
+	private ArrayList<Shape> drawList; 
+	private int startX, startY, endX, endY;
+	private GridBagLayout1 gridBagLayout1;
 	
 	public Grid(){		
-		
-		//drawList = new ArrayList<Shape>(1000);
-		
+		drawList = new ArrayList<Shape>(1000);
+		drawList.add(new Line(400, 150, 700, 150));
 		setLayout(new BorderLayout());
-		
-		gridLayout = new GridLayout();
+		gridBagLayout1 = new GridBagLayout1();
 		
 		Container c = getContentPane();
-		c.setSize(1200, 700);
-		//c.add(gridPanel,BorderLayout.WEST);
-		c.add(gridLayout,BorderLayout.CENTER);
+		c.setSize(width, height);
+		c.add(gridBagLayout1,BorderLayout.EAST);
 		
 		
 	}
@@ -42,4 +35,11 @@ public class Grid extends JFrame{
 	public static void main(String[] args) {
 		Grid s = new Grid ();
 	  }
+
+	public void paint(Graphics g) {
+		for (int i = 0; i < drawList.size(); i++) {
+			Shape s = drawList.get(i);
+			s.draw(g);
+		}
+	}	
 }
