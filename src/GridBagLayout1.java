@@ -1,27 +1,37 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+import java.util.*;
+import javax.swing.border.*;
 
 public class GridBagLayout1 extends JFrame{
+
 	public GridBagLayout1(){
 		JFrame f = new JFrame("Electronics CAD Package");  //creating a JFrame
 		f.setSize(1200, 700); //setting the size of the JFrame
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to set exit on close
-
-		//Creating the side panel
+       
+		//Creating the side buttons
+		
 		JPanel panel2 = new JPanel(new GridBagLayout()); //arrange labels and buttons in a panel using GridBagLayout
 		f.getContentPane().add(panel2, BorderLayout.CENTER); //added the panel to the frame as well as set the orientation to the center of the screen
+		panel2.setOpaque(true);
+		panel2.setBackground(Color.WHITE);
+		LineBorder.createBlackLineBorder();
+        
 		GridBagConstraints c2 = new GridBagConstraints();
 		c2.fill = GridBagConstraints.BOTH; //Allowing the empty spaces to be filled in both the x and y axes
 		c2.weightx = 10; c2.weighty = 10; //Selecting a weight for the GridBagLayout to determine how to distribute the extra horizontal and vertical space
 		
 		JLabel l1 = new JLabel("Core Parts");
-		c2.gridx = 4; c2.gridy = 2;
+		c2.gridx = 4; c2.gridy = 2; //l1.setBackground(Color.LIGHT_GRAY);
 		panel2.add(l1, c2);	 //Adding the JLabel l1 to the Panel and adding to it the GridBagLayout function
 		JButton b11 = new JButton("Resistor");
 		c2.gridx = 4; c2.gridy = 3;
 		panel2.add(b11, c2);
 		JButton b12 = new JButton("Capacitor");
 		c2.gridx = 4; c2.gridy = 4;
+		
 		panel2.add(b12, c2);
 		JButton b13 = new JButton("Inductor");
 		c2.gridx = 4; c2.gridy = 5;
@@ -127,7 +137,7 @@ public class GridBagLayout1 extends JFrame{
 		panel2.add(b84, c2);
 
 		
-		//Top Panel
+		//Top Buttons
 		JButton b1 = new JButton("     Welcome     ");
 		c2.gridx = 0; c2.gridy = 0;
 		panel2.add(b1, c2);	
@@ -144,11 +154,6 @@ public class GridBagLayout1 extends JFrame{
 		c2.gridx = 4; c2.gridy = 0;
 		panel2.add(b5, c2);
 				
-		JTextField t1 = new JTextField(); //Placeholder for the grid draw section
-		c2.gridx = 0; c2.gridy = 2;
-		c2.gridwidth = 4; c2.gridheight = 35;
-		panel2.add(t1,c2);
-		
 		//font = new Font("Helvetica", Font.PLAIN, 40);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -179,15 +184,16 @@ public class GridBagLayout1 extends JFrame{
 		JMenuItem checkupdates = new JMenuItem("Check for Updates"); help.add(checkupdates);
 		JMenuItem about = new JMenuItem("About"); help.add(about);
 		
+		//JPopupMenu pmenu = new JPopupMenu("About");pmenu.add(help);
+		
 		f.setJMenuBar(menuBar);
-	
 		
 		//JOptionPane.showMessageDialog(null,"       Electronics CAD Package\n"+ "by Shrikant Limaye & Sushmita De");
-	
-		f.setVisible(true); //setting the visibility to true
 
-		
+        
+		f.setVisible(true); //setting the visibility to true
+         
 	}
 	
-
 }
+
